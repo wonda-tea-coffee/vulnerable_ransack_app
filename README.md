@@ -1,24 +1,24 @@
-# README
+# ransack vulnerable app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The default configuration of gem ransack is very dangerous.
+The app does not use ransackable_attributes to narrow down the columns that can be searched, making it vulnerable to identifying confidential information.
 
-Things you may want to cover:
+For a more detailed explanation of the vulnerability, see the following blog post.
+https://younes.codes/posts/how-to-hack-with-ransack
 
-* Ruby version
+# setup
 
-* System dependencies
+```sh
+docker-compose build
+docker-compose run --rm web bin/setup
+docker-compose up
+```
 
-* Configuration
+# how to play
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+After completing the above setup, an API server will be set up on localhost:3000.
+The target endpoint is /users, which returns a list of user IDs.
+The users table has a secret column, the contents of which are random UUID.
+In /users, the query parameter q is used as a query for ransack.
+Try to learn ransack's matcher and identify the value of the secret column for the user with user ID 1.
+The possible solutions are placed in the repository root as exploit.py, so take a look at it if you still can't figure it out.
