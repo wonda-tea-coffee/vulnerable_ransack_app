@@ -8,7 +8,5 @@ services:
       - gem-home:/usr/local/bundle
     ports:
       - "3000:3000"
-    depends_on:
-      - db
 volumes:
   gem-home:
