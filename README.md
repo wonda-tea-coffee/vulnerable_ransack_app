@@ -1,4 +1,4 @@
-# ransack vulnerable app
+# vulnerable ransack app
 
 The default configuration of gem ransack is very dangerous. The app does not use ransackable_attributes to narrow down the columns that can be searched, making it vulnerable to identifying confidential information. For a more detailed explanation of the vulnerability, see the following blog post.  
 https://younes.codes/posts/how-to-hack-with-ransack
